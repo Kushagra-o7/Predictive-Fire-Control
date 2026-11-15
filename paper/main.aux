@@ -1,0 +1,74 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{section.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Elevation-plane engagement geometry. The reference points at the predicted position $\hat  {\mathbf  {p}}(t+T_p)$. The delay-matched loop makes the turret, and hence the beam, lag that reference so that it lies on the current position $\mathbf  {p}(t)$.}}{1}{figure.1}\protected@file@percent }
+\newlabel{fig:schematic}{{1}{1}{Elevation-plane engagement geometry. The reference points at the predicted position $\hat {\vect p}(t+\Tp )$. The delay-matched loop makes the turret, and hence the beam, lag that reference so that it lies on the current position $\vect p(t)$}{figure.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {II}System Architecture and Design}{1}{section.2}\protected@file@percent }
+\citation{singer1970,li2003}
+\citation{vanloan1978}
+\citation{barshalom2001}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Predictive-feedback architecture (closed-loop block diagram). The estimator and predictor form the reference; the LTI loop $G_cG_p$ positions the turret; the fire logic issues pulses using the current estimate and its covariance.}}{2}{figure.2}\protected@file@percent }
+\newlabel{fig:block}{{2}{2}{Predictive-feedback architecture (closed-loop block diagram). The estimator and predictor form the reference; the LTI loop $G_cG_p$ positions the turret; the fire logic issues pulses using the current estimate and its covariance}{figure.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Mathematical Modeling}{2}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Turret Elevation Plant}{2}{subsection.3.1}\protected@file@percent }
+\newlabel{sec:plant}{{\mbox  {III-A}}{2}{Turret Elevation Plant}{subsection.3.1}{}}
+\newlabel{eq:elec}{{1}{2}{Turret Elevation Plant}{equation.1}{}}
+\newlabel{eq:mech}{{2}{2}{Turret Elevation Plant}{equation.2}{}}
+\newlabel{eq:Gp}{{3}{2}{Turret Elevation Plant}{equation.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Target Model and Estimator (Singer EKF)}{2}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Prediction Model and Elevation Reference}{2}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Closed-Loop Model}{2}{subsection.3.4}\protected@file@percent }
+\newlabel{eq:Ep}{{11}{2}{Closed-Loop Model}{equation.11}{}}
+\citation{ogata}
+\citation{franklin}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Controller Design and Analysis}{3}{section.4}\protected@file@percent }
+\newlabel{sec:design}{{IV}{3}{Controller Design and Analysis}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Design Requirement: Make $T(s)$ Behave Like $e^{-sT_p}$}{3}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Delay-Matched Compensator Derivation}{3}{subsection.4.2}\protected@file@percent }
+\newlabel{eq:resid}{{14}{3}{Delay-Matched Compensator Derivation}{equation.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Error Constants}{3}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Stability: Routh--Hurwitz}{3}{subsection.4.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Root locus of $G_cG_p$ versus a gain multiplier on $K_c$ ($\times $ open-loop poles, $\star $ design closed-loop poles, $\circ $ imaginary-axis crossing at $79.1K_c$, $\omega =29.6$\,rad/s).}}{3}{figure.3}\protected@file@percent }
+\newlabel{fig:rlocus}{{3}{3}{Root locus of $G_cG_p$ versus a gain multiplier on $K_c$ ($\times $ open-loop poles, $\star $ design closed-loop poles, $\circ $ imaginary-axis crossing at $79.1K_c$, $\omega =29.6$\,rad/s)}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-E}}Root Locus and Frequency Response}{3}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-F}}Transient Response}{3}{subsection.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-G}}Pointing-Error Transfer, Noise and Prediction Error}{3}{subsection.4.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Bode plot of $L(s)$. Final delay-matched design: PM $=65.4^\circ $ at 1.83\,rad/s ($\bullet $), GM $=38.0$\,dB at 29.6\,rad/s ($\blacksquare $). Tight PI comparison: PM $=56.0^\circ $ at 7.99\,rad/s, GM $=13.0$\,dB at 45.9\,rad/s.}}{4}{figure.4}\protected@file@percent }
+\newlabel{fig:bode}{{4}{4}{Bode plot of $L(s)$. Final delay-matched design: PM $=65.4^\circ $ at 1.83\,rad/s ($\bullet $), GM $=38.0$\,dB at 29.6\,rad/s ($\blacksquare $). Tight PI comparison: PM $=56.0^\circ $ at 7.99\,rad/s, GM $=13.0$\,dB at 45.9\,rad/s}{figure.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces (a) Closed-loop unit-step response: final $t_r=0.75$\,s, $t_s=2.09$\,s, $M_p=4.3$\,\%; tight $t_r=0.13$\,s, $t_s=1.25$\,s, $M_p=21.1$\,\%. (b) Motor voltage for a $35^\circ $ acquisition slew (peak 795\,V vs 4.0\,kV).}}{4}{figure.5}\protected@file@percent }
+\newlabel{fig:step}{{5}{4}{(a) Closed-loop unit-step response: final $t_r=0.75$\,s, $t_s=2.09$\,s, $M_p=4.3$\,\%; tight $t_r=0.13$\,s, $t_s=1.25$\,s, $M_p=21.1$\,\%. (b) Motor voltage for a $35^\circ $ acquisition slew (peak 795\,V vs 4.0\,kV)}{figure.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-H}}Measurement Loss and Physical Limits}{4}{subsection.4.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Delay matching. (a) Pointing-error transfer $|1-Te^{sT_p}|$. (b) Pointing error for a ramp-plus-parabola target angle.}}{4}{figure.6}\protected@file@percent }
+\newlabel{fig:delay}{{6}{4}{Delay matching. (a) Pointing-error transfer $|1-Te^{s\Tp }|$. (b) Pointing error for a ramp-plus-parabola target angle}{figure.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-I}}Fire-Control Logic}{4}{subsection.4.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-J}}Alternatives Considered}{4}{subsection.4.10}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Architecture comparison on scenarios A--I (same EKF and fire logic)}}{5}{table.1}\protected@file@percent }
+\newlabel{tab:cmp}{{I}{5}{Architecture comparison on scenarios A--I (same EKF and fire logic)}{table.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Design parameters (single set for all cases)}}{5}{table.2}\protected@file@percent }
+\newlabel{tab:params}{{II}{5}{Design parameters (single set for all cases)}{table.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Simulation and Results}{5}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Setup}{5}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Results}{5}{subsection.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Scenario B (maneuvering target). (a) True, reference and turret elevation; stars mark pulses. (b) True beam--target distance, estimated distance and pulse outcomes (green: hit).}}{5}{figure.7}\protected@file@percent }
+\newlabel{fig:caseB}{{7}{5}{Scenario B (maneuvering target). (a) True, reference and turret elevation; stars mark pulses. (b) True beam--target distance, estimated distance and pulse outcomes (green: hit)}{figure.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Scenario C (radar loss 1.0--1.5\,s, shaded). (a) Pointing error and pulses. (b) Position estimation error with $\pm 2\sigma $ bounds. (c) Cross-beam standard deviation and the fire gate.}}{5}{figure.8}\protected@file@percent }
+\newlabel{fig:caseC}{{8}{5}{Scenario C (radar loss 1.0--1.5\,s, shaded). (a) Pointing error and pulses. (b) Position estimation error with $\pm 2\sigma $ bounds. (c) Cross-beam standard deviation and the fire gate}{figure.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Estimator Parameter Selection}{5}{subsection.5.3}\protected@file@percent }
+\bibcite{singer1970}{1}
+\bibcite{li2003}{2}
+\bibcite{barshalom2001}{3}
+\bibcite{vanloan1978}{4}
+\bibcite{ogata}{5}
+\bibcite{franklin}{6}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Performance of the finalized design ($d$: true beam--target distance, $t\ge 3$\,s; estimation and prediction errors for $t\ge 1$\,s; $t_{rec}$: time after radar loss until $|d|\le R_{eng}$)}}{6}{table.3}\protected@file@percent }
+\newlabel{tab:cases}{{III}{6}{Performance of the finalized design ($d$: true beam--target distance, $t\ge 3$\,s; estimation and prediction errors for $t\ge 1$\,s; $t_{rec}$: time after radar loss until $|d|\le R_{eng}$)}{table.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Estimator sensitivity on tuning cases: time with beam in $R_{eng}$ [\%] / mean pulse miss [m]}}{6}{table.4}\protected@file@percent }
+\newlabel{tab:sens}{{IV}{6}{Estimator sensitivity on tuning cases: time with beam in $R_{eng}$ [\%] / mean pulse miss [m]}{table.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Generalization over 50 random admissible engagements. (a) First interception time. (b) Miss distance of all issued pulses (dashed: $R_{eng}$).}}{6}{figure.9}\protected@file@percent }
+\newlabel{fig:mc}{{9}{6}{Generalization over 50 random admissible engagements. (a) First interception time. (b) Miss distance of all issued pulses (dashed: $R_{eng}$)}{figure.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Final Evaluation}{6}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Conclusions}{6}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{References}{6}{section*.1}\protected@file@percent }
+\gdef \@abspage@last{7}
