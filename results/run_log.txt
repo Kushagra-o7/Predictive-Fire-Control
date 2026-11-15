@@ -1,0 +1,102 @@
+Guardian predictive fire-control simulation
+Compensator: Gc(s) = 2003.0 / (0.2467 s + 1)
+Estimator  : EKF Singer model, tau_m = 1.0 s, sigma_m = 8.0 m/s^2
+Prediction : Tp = 0.50 s
+
+================ CONTROLLER DESIGN ANALYSIS ================
+Plant  Gp(s) = 1000 / ( s (320 s^2 + 3350 s + 1.0015e+06) )
+  plant poles: [0 -5.234+55.7i -5.234-55.7i]
+  electromechanical resonance: wn = 55.94 rad/s, zeta = 0.094
+  low-frequency model: Gp ~ (K_N/d0)/s = 0.0009985/s  (rad/s per V)
+
+--- delay-matched (final):  Gc(s) = 2003.0 / (0.2467 s + 1)
+  gain margin  38.0 dB at 29.6 rad/s,  phase margin 65.4 deg at 1.83 rad/s
+  closed-loop bandwidth (-3 dB) 2.86 rad/s,  Kv = 2.000 1/s (ramp lag 1/Kv = 0.500 s)
+    CL pole   -5.243  +55.625j   wn =  55.87  zeta = 0.094
+    CL pole   -2.019   +2.014j   wn =   2.85  zeta = 0.708
+  stable: 1
+
+--- tight (comparison):  Gc(s) = 8012 (s+2.00)/s / (s/24.0 + 1)
+  gain margin  13.0 dB at 45.9 rad/s,  phase margin 56.0 deg at 7.99 rad/s
+  closed-loop bandwidth (-3 dB) 13.83 rad/s,  Kv = Inf 1/s (ramp lag 1/Kv = 0.000 s)
+    CL pole   -4.854  +53.979j   wn =  54.20  zeta = 0.090
+    CL pole  -10.909   +4.473j   wn =  11.79  zeta = 0.925
+    CL pole   -2.943   +0.000j   wn =   2.94  zeta = 1.000
+  stable: 1
+
+Delay matching (final design): 1/T(s) = 1 + c1 s + c2 s^2 + c3 s^3 + ...
+  c1 = 0.5000  (target Tp     = 0.5000)
+  c2 = 0.1250  (target Tp^2/2 = 0.1250)
+  c3 = 0.00057  (Tp^3/6 = 0.02083) -> residual pointing error ~ 0.0203 * d^3(theta)/dt^3
+Step (delay-matched (final)): rise 0.75 s, settling(2%) 2.09 s, overshoot 4.3 %
+Step (tight (comparison)): rise 0.13 s, settling(2%) 1.25 s, overshoot 21.1 %
+=============================================================
+
+================ TRAJECTORY ENVELOPE CHECK ================
+A: Nominal               r = [1081.7, 1835.8] m  |v|max = 100.0 m/s  |a|max =  0.0 m/s^2  theta = [ 29.4,  56.3] deg  -> PASS
+B: Maneuvering           r = [1170.5, 1835.8] m  |v|max = 100.7 m/s  |a|max = 14.2 m/s^2  theta = [ 29.4,  55.4] deg  -> PASS
+C: Measurement loss      r = [1081.7, 1835.8] m  |v|max = 100.0 m/s  |a|max =  0.0 m/s^2  theta = [ 29.4,  56.3] deg  -> PASS
+D: Maneuver + loss       r = [1170.5, 1835.8] m  |v|max = 100.7 m/s  |a|max = 14.2 m/s^2  theta = [ 29.4,  55.4] deg  -> PASS
+E: High-g jinks          r = [1008.2, 1655.3] m  |v|max = 100.8 m/s  |a|max = 18.9 m/s^2  theta = [ 25.0,  55.8] deg  -> PASS
+F: Climbing crosser      r = [1280.2, 1422.1] m  |v|max = 104.0 m/s  |a|max = 11.5 m/s^2  theta = [ 10.1,  51.2] deg  -> PASS
+G: Diving attack         r = [1016.7, 1920.9] m  |v|max = 103.0 m/s  |a|max = 17.1 m/s^2  theta = [ 42.7,  51.3] deg  -> PASS
+H: Near-overhead         r = [1263.3, 1500.0] m  |v|max =  86.5 m/s  |a|max =  8.0 m/s^2  theta = [ 53.1,  87.7] deg  -> PASS
+I: Fast long-range       r = [1415.7, 1972.9] m  |v|max = 139.0 m/s  |a|max = 19.2 m/s^2  theta = [  8.7,  51.2] deg  -> PASS
+Case A: Nominal            : HIT at  1.17 s | 9/9 pulses hit | min miss 0.01 m | RMS point 0.48 m
+Case B: Maneuvering        : HIT at  1.17 s | 9/9 pulses hit | min miss 0.40 m | RMS point 1.36 m
+Case C: Measurement loss   : HIT at  2.61 s | 8/8 pulses hit | min miss 0.05 m | RMS point 0.41 m
+Case D: Maneuver + loss    : HIT at  2.59 s | 8/8 pulses hit | min miss 0.33 m | RMS point 1.28 m
+Case E: High-g jinks       : HIT at  1.17 s | 9/9 pulses hit | min miss 0.00 m | RMS point 1.38 m
+Case F: Climbing crosser   : HIT at  1.20 s | 8/8 pulses hit | min miss 0.31 m | RMS point 1.03 m
+Case G: Diving attack      : HIT at  1.17 s | 6/6 pulses hit | min miss 0.71 m | RMS point 2.13 m
+Case H: Near-overhead      : HIT at  1.18 s | 8/8 pulses hit | min miss 0.15 m | RMS point 11.35 m
+Case I: Fast long-range    : HIT at  1.20 s | 7/7 pulses hit | min miss 0.04 m | RMS point 2.45 m
+
+=================== SUMMARY - FINAL DESIGN ===================
+    Case    Success    t_intercept_s    Hits    Pulses    MissMin_m     MissMean_m    t_acquire_s    RMSpoint_m    MaxPoint_m    PctInR    RMStrack_deg    RMSposErr_m    RMSvelErr_mps    RMSpredErr_m    BOmaxPoint_m    BOrecovery_s    Vpeak_V    Ipeak_A
+    ____    _______    _____________    ____    ______    __________    __________    ___________    __________    __________    ______    ____________    ___________    _____________    ____________    ____________    ____________    _______    _______
+
+    "A"      true          1.172         9        9         0.010564     0.44826         1.169        0.47823        1.7308         100       1.6295         0.54132         1.7466           1.6218             NaN            NaN        694.97     21.011 
+    "B"      true          1.172         9        9          0.39928      1.2446         1.171         1.3569        2.3054      86.459       1.5128         0.57658         2.5194           2.6063             NaN            NaN        694.89     21.021 
+    "C"      true          2.609         8        8         0.050925     0.41151         1.169        0.40927          1.35         100       1.6279         0.53056         1.6255           1.5364          61.069          1.087        693.13     21.028 
+    "D"      true          2.593         8        8          0.33154      1.1135         1.172         1.2825        2.4348      86.602       1.5113         0.68564         2.7219           2.8289          60.747           1.03        695.72     21.014 
+    "E"      true          1.174         9        9       0.00037032     0.78189          1.17          1.376        2.6646      76.203       1.8806         0.55307         2.8598           2.9227             NaN            NaN        594.67     17.929 
+    "F"      true            1.2         8        8          0.31099      1.0154          1.19         1.0319        2.7156      93.172       2.0611         0.69932          2.607           2.5937          2.7156          0.434        299.37     7.2833 
+    "G"      true          1.165         6        6          0.70845      1.3681         1.165         2.1348        5.1643      53.635      0.59578         0.74822         3.2385           3.3481          22.539              0        1156.4     36.739 
+    "H"      true          1.175         8        8          0.15488     0.57772         1.173         11.347        60.765      79.117       1.7146         0.57619         2.2008           2.0619             NaN            NaN        1254.9     38.025 
+    "I"      true          1.204         7        7         0.042712     0.66924         1.192         2.4458        4.5204      53.949       2.4315         0.74099         3.3692           3.4853          4.5204              0        253.87     6.2807 
+
+
+Monte-Carlo: 50 random admissible engagements...
+  10 / 50 done
+  20 / 50 done
+  30 / 50 done
+  40 / 50 done
+  50 / 50 done
+  success rate        : 100.0 % (50 / 50)
+  intercept time      : median 1.17 s, 90th pct 1.18 s, max 2.60 s
+  hit ratio of pulses : 99.5 %
+  RMS pointing (mean) : 0.76 m
+
+================ ARCHITECTURE COMPARISON ================
+Final: delay-matched, Tp=0.5                   success 9/9, mean t_int 1.50 s, mean RMS pointing   2.43 m, hits 72/72, peak V 1255
+Tight PI, Tp=0.5 (reference tracked tightly)   success 2/9, mean t_int 5.47 s, mean RMS pointing  37.87 m, hits 2/2, peak V 6241
+Tight PI, no prediction (Tp=0)                 success 9/9, mean t_int 2.00 s, mean RMS pointing   1.86 m, hits 75/75, peak V 6137
+Delay-matched loop, no prediction              success 7/9, mean t_int 1.45 s, mean RMS pointing  37.19 m, hits 7/7, peak V 1224
+
+================ ESTIMATOR SENSITIVITY ================
+sigma_m =  4.0, tau_m = 1.0 : success 100.0 %, mean miss 0.74 m, in-R  96.4 %, pred RMS 1.89 m
+sigma_m =  4.0, tau_m = 2.0 : success 100.0 %, mean miss 0.80 m, in-R  93.7 %, pred RMS 2.03 m
+sigma_m =  4.0, tau_m = 4.0 : success 100.0 %, mean miss 0.85 m, in-R  89.7 %, pred RMS 2.17 m
+sigma_m =  8.0, tau_m = 1.0 : success 100.0 %, mean miss 0.63 m, in-R  97.9 %, pred RMS 2.07 m
+sigma_m =  8.0, tau_m = 2.0 : success 100.0 %, mean miss 0.67 m, in-R  97.5 %, pred RMS 2.12 m
+sigma_m =  8.0, tau_m = 4.0 : success 100.0 %, mean miss 0.74 m, in-R  96.0 %, pred RMS 2.15 m
+sigma_m = 12.0, tau_m = 1.0 : success 100.0 %, mean miss 0.58 m, in-R  97.9 %, pred RMS 2.36 m
+sigma_m = 12.0, tau_m = 2.0 : success 100.0 %, mean miss 0.62 m, in-R  97.9 %, pred RMS 2.33 m
+sigma_m = 12.0, tau_m = 4.0 : success 100.0 %, mean miss 0.68 m, in-R  97.3 %, pred RMS 2.27 m
+sigma_m = 16.0, tau_m = 1.0 : success 100.0 %, mean miss 0.56 m, in-R  97.9 %, pred RMS 2.66 m
+sigma_m = 16.0, tau_m = 2.0 : success 100.0 %, mean miss 0.59 m, in-R  97.8 %, pred RMS 2.57 m
+sigma_m = 16.0, tau_m = 4.0 : success 100.0 %, mean miss 0.63 m, in-R  97.6 %, pred RMS 2.43 m
+
+Results saved to C:\Users\kusha\ME319_Assignment2\results
+Elapsed time is 401.381335 seconds.
